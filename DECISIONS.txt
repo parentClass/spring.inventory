@@ -1,0 +1,26 @@
+The way I made the microservice
+
+1. We have 3 objects present
+    - Inventory, pertains to the inventory
+    - Stock, pertains to the stock that is associated to the inventory
+    - Stock History, pertains to the history of modification of a stock which is associated to an inventory
+
+Diagram
+    Inventory <-- Stock
+    Inventory <-- Stock History
+
+(we can actually go with Inventory <-- Stock <-- Stock History)
+(but since I'm running out of time due to errands, I decided to associate both stock and stock history with inventory
+
+2. Made a couple of endpoints for 3 objects (see README)
+3. Unit testing could've been more fine-grained, but I'm running out of time
+ (given time, I'll probably do separation of concerns)
+ (separate mocking, probably create mock extension or utility in test)
+ (separate negative testing)
+ (do an additional integration testing for endpoint test)
+ (cover some super edge cases, like extra checking on the amount supplied for stock)
+4. I probably will also create a utility package for things like the persistence of stock history
+    (probably put it in utility for re-usability and modularity)
+5. I will also probably transfer the validation methods I create into a package or maybe in utility as well
+6. Add more robustness to object properties, currently there are no constraints added (lack of time)
+7. Probably add more constraint as well in the parameters required for every endpoint
